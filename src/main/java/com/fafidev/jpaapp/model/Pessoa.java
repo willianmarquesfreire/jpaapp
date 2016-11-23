@@ -1,14 +1,20 @@
 package com.fafidev.jpaapp.model;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Persistence;
 import javax.persistence.Table;
 
 /**
@@ -28,6 +34,9 @@ public class Pessoa implements Serializable {
     private String email;
     @ManyToOne
     private Endereco endereco;
+    
+    @OneToMany
+    private List<Conta> contas;
 
     public Long getId() {
         return id;
@@ -54,20 +63,31 @@ public class Pessoa implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Pessoa)) {
             return false;
         }
         Pessoa other = (Pessoa) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+        return !((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)));
     }
 
     @Override
     public String toString() {
         return email;
+    }
+
+    public void persist(Object object) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("JpaAppPU");
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        try {
+            em.persist(object);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+        }
     }
 
 }

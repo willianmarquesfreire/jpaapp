@@ -1,7 +1,7 @@
 -------------------------------------------------------------------------------
 Test set: com.fafidev.jpaapp.dao.conexao.ConexaoTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.663 sec <<< FAILURE!
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.637 sec <<< FAILURE!
 temConexaoValida(com.fafidev.jpaapp.dao.conexao.ConexaoTest)  Time elapsed: 0.006 sec  <<< ERROR!
 java.lang.ExceptionInInitializerError
 	at com.fafidev.jpaapp.dao.conexao.ConexaoTest.<init>(ConexaoTest.java:16)

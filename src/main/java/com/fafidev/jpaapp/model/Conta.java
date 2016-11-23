@@ -2,9 +2,12 @@ package com.fafidev.jpaapp.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -22,6 +25,9 @@ public class Conta implements Serializable {
     private String digitoVerificador;
     @Column(precision = 5, scale = 5)
     private BigDecimal saldo;
+
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
+    private List<Movimentacao> movimentacoes;
 
     public Long getID() {
         return ID;
@@ -53,6 +59,14 @@ public class Conta implements Serializable {
 
     public void setSaldo(BigDecimal saldo) {
         this.saldo = saldo;
+    }
+
+    public List<Movimentacao> getMovimentacoes() {
+        return movimentacoes;
+    }
+
+    public void setMovimentacoes(List<Movimentacao> movimentacoes) {
+        this.movimentacoes = movimentacoes;
     }
 
     public void depositar(BigDecimal valor) {
