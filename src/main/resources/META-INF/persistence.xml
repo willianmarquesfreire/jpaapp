@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="JpaAppPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <class>com.fafidev.jpaapp.model.Pessoa</class>
+    <class>com.fafidev.jpaapp.model.Endereco</class>
+    <class>com.fafidev.jpaapp.model.PessoaFisica</class>
+    <class>com.fafidev.jpaapp.model.Telefone</class>
+    <class>com.fafidev.jpaapp.model.Pais</class>
+    <class>com.fafidev.jpaapp.model.Estado</class>
+    <class>com.fafidev.jpaapp.model.Cidade</class>
+    <properties>
+      <property name="hibernate.connection.driver_class" value="org.apache.derby.jdbc.ClientDriver"/>
+      <property name="hibernate.dialect" value="org.hibernate.dialect.DerbyDialect"/>
+      <property name="hibernate.connection.url" value="jdbc:derby://localhost:1527/jpaapp"/>
+      <property name="hibernate.connection.password" value="root"/>
+      <property name="hibernate.connection.username" value="root"/>
+      <property name="hibernate.hbm2ddl.auto" value="update"/>
+      <property name="hibernate.show_sql" value="false"/>
+      <property name="hibernate.format_sql" value="true"/>
+    </properties>
+  </persistence-unit>
+</persistence>
