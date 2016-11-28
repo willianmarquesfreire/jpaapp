@@ -1,11 +1,14 @@
 package com.fafidev.jpaapp.model;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -24,6 +27,10 @@ public class Banco implements Serializable {
     private String codigo;
     @Column(nullable = false, unique = true)
     private String nome;
+
+    @OneToMany
+    @JoinTable(name = "BANCO_AGENCIAS")
+    private List<Agencia> agencia;
 
     public Long getID() {
         return ID;
@@ -47,6 +54,14 @@ public class Banco implements Serializable {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public List<Agencia> getAgencia() {
+        return agencia;
+    }
+
+    public void setAgencia(List<Agencia> agencia) {
+        this.agencia = agencia;
     }
 
 }

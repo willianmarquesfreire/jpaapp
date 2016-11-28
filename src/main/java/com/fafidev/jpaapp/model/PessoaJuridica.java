@@ -8,7 +8,7 @@ import javax.persistence.Temporal;
 
 /**
  *
- * @author fernando
+ * @author Willian
  */
 @Entity
 @Table(name = "pessoasjuridicas")

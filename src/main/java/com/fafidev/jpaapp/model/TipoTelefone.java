@@ -2,7 +2,7 @@ package com.fafidev.jpaapp.model;
 
 /**
  *
- * @author fernando
+ * @author Willian
  */
 public enum TipoTelefone {
 

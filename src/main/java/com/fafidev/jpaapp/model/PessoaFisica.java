@@ -5,7 +5,7 @@ import javax.persistence.Table;
 
 /**
  *
- * @author fernando
+ * @author Willian
  */
 @Entity
 @Table(name = "pessoasfisicas")
